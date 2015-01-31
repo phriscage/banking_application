@@ -17,23 +17,37 @@ class Customer(object):
         self.accounts = Accounts()
 
     def create_account(self, account_type):
-        """ add a new account by account_type """
+        """ add a new account by account_type
+        Args:
+            account_type (str): type of account
+        """
         account_type = str(account_type)
         if not self.accounts.get(account_type, None):
             self.accounts[account_type] = Account(account_type)
 
     def close_account(self, account_type):
-        """ close a account by account_type """
+        """ close a account by account_type
+        Args:
+            account_type (str): type of account
+        """
         self.accounts.pop(str(account_type), None)
 
     def deposit_into_account(self, account_type, money):
-        """ deposit money into account by account_type """
+        """ deposit money into account by account_type
+        Args:
+            account_type (str): type of account
+            money (int): monetary value in cents
+        """
         account = self.accounts.get(str(account_type), None)
         if account:
             account.deposit(money)
 
     def withdrawl_from_account(self, account_type, money):
-        """ withdrawl money from account by account_type """
+        """ withdrawl money from account by account_type
+        Args:
+            account_type (str): type of account
+            money (int): monetary value in cents
+        """
         account = self.accounts.get(str(account_type), None)
         if account:
             account.withdrawl(money)

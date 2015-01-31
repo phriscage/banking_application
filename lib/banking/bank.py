@@ -18,19 +18,29 @@ class Bank(object):
         self.signup_customer(name)
 
     def signup_customer(self, name):
-        """ signup a new customer to the bank """
+        """ signup a new customer to the bank
+        Args:
+            name (str): name of a customer
+        """
         name = str(name)
         if not self.customers.get(name, None):
             self.customers[name] = Customer(name)
 
     def close_customer_account(self, name, account_type):
-        """ close an account for a customer by name and account_type """
+        """ close an account for a customer by name and account_type
+        Args:
+            name (str): name of a customer
+            account_type (str): type of account
+        """
         customer = self.customers.get(str(name), None)
         if customer:
             customer.close_account(str(account_type))
 
     def cancel_customer_accounts(self, name):
-        """ cancel customer account(s) and put balances in the bank savings """
+        """ cancel customer account(s) and put balances in the bank savings
+        Args:
+            name (str): name of a customer
+        """
         customer = self.customers.get(str(name), None)
         if customer:
             self.customers[self.name].create_account('savings')
