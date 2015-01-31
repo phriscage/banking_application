@@ -1,6 +1,7 @@
 """
     name class
 """
+#pylint: disable=R0903
 
 class Name(object):
     """ the name class includes """

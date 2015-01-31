@@ -6,6 +6,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + '/../../lib')
 from banking.name import Name
 from banking.account import Account
+from banking.accounts import Accounts
 
 class Customer(object):
     """ the customer class includes """
@@ -13,7 +14,7 @@ class Customer(object):
     def __init__(self, name):
         """ instantiate the customer """
         self.name = Name(name)
-        self.accounts = {}
+        self.accounts = Accounts()
 
     def create_account(self, account_type):
         """ add a new account by account_type """
@@ -24,6 +25,18 @@ class Customer(object):
     def close_account(self, account_type):
         """ close a account by account_type """
         self.accounts.pop(str(account_type), None)
+
+    def deposit_into_account(self, account_type, money):
+        """ deposit money into account by account_type """
+        account = self.accounts.get(str(account_type), None)
+        if account:
+            account.deposit(money)
+
+    def withdrawl_from_account(self, account_type, money):
+        """ withdrawl money from account by account_type """
+        account = self.accounts.get(str(account_type), None)
+        if account:
+            account.withdrawl(money)
 
     def get_account_totals(self):
         """ get the totals for all accounts """
